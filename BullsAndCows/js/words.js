@@ -1,0 +1,20 @@
+var words = [
+    "cast",
+    "cart",
+    "ante",
+    "bulk",
+    "scar",
+    "scat",
+    "xeno",
+    "zeal",
+    "dust",
+    "fork",
+    "gust",
+    "hilt",
+    "jinx",
+    "mark",
+    "pest",
+    "vase",
+    "work",
+    "yolk"
+]; //A sample set of words that the computer will guess
