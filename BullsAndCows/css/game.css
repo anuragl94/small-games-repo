@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: gray;
+    background-color: #257aaf;
 }
 
 .wordInput .letterInput {
@@ -14,7 +14,7 @@ body {
     width: 24px;
     text-align: center;
     border: 0;
-    border-bottom: 3px solid #aaaaaa;
+    border-bottom: 3px solid #3294d2;
 }
 .wordInput .letterInput:focus {
     outline: none;
@@ -56,10 +56,13 @@ body {
     color: black;
 }
 
-.checkWord:focus {
+.checkWord:focus, .checkWord:hover {
+    margin-top: -3px;
     background-color: #5cb85c;
     color: white;
     outline: none;
+    border-bottom: 3px solid #4b8e48;
+    transition-duration: 0.5s;
 }
 
 .pageGap {
@@ -80,7 +83,7 @@ body {
     padding: 2px;
     width: 54px;
     margin-left: 20px;
-    background-color: #045c94;
+    background-color: gray;
     border-radius: 2px;
     text-align: center;
     color: white;
