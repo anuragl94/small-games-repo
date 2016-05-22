@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/Quicksand-Regular.ttf');
+}
+
+body {
+    background-color: #257aaf;
+}
+
+.wordInput .letterInput {
+    background-color: #fafafa;
+    display: inline-block;
+    text-transform: uppercase;
+    width: 24px;
+    text-align: center;
+    border: 0;
+    border-bottom: 3px solid #3294d2;
+}
+.wordInput .letterInput:focus {
+    outline: none;
+    background-color: #e0e0e0;
+}
+.wordInput .letterInput[disabled] {
+    background-color: rgba(0,0,0,0);
+}
+
+.gameArea, .scratchArea {
+    margin: 12px;
+    padding: 15px;
+    border-radius: 2px;
+    background-color: rgba(255,255,255,0.5);
+}
+.gameArea .mb {
+    margin-bottom: 16px;
+}
+
+.scratchArea .scratchItem {
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.scratchArea .scratched {
+    background-color: transparent;
+    opacity: 0.5;
+}
+
+.checkWord {
+    padding: 1px 6px;
+    margin-left: 20px;
+    background-color: #dddddd;
+    color: black;
+}
+
+.checkWord:focus, .checkWord:hover {
+    margin-top: -3px;
+    background-color: #5cb85c;
+    color: white;
+    outline: none;
+    border-bottom: 3px solid #4b8e48;
+    transition-duration: 0.5s;
+}
+
+.pageGap {
+    height: 86px;
+}
+
+.gameTitle {
+    margin: 12px;
+    top: 62px;
+    font-size: 48px;
+    vertical-align: middle;
+    font-family: 'quicksand', 'calibri';
+    color: white;
+}
+
+.cows, .bulls {
+    display: inline-block;
+    padding: 2px;
+    width: 54px;
+    margin-left: 20px;
+    background-color: gray;
+    border-radius: 2px;
+    text-align: center;
+    color: white;
+}
+
+.victoryMessage {
+    display: inline-block;
+    width: 132px;
+    margin-left: 20px;
+    background-color: #5cb85c;
+    color: white;
+    padding: 2px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+#toast-container>div[class^="toast"] {
+    background-image: none !important;
+}

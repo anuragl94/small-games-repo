@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bulls and Cows</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/toastr.min.css">
+        <link rel="stylesheet" href="css/game.css">
+    </head>
+    <body>
+        <div class="template" style="display:none;">
+            <div class="wordInput">
+                <input type="text" class="letterInput" maxlength="1">
+                <input type="text" class="letterInput" maxlength="1">
+                <input type="text" class="letterInput" maxlength="1">
+                <input type="text" class="letterInput" maxlength="1">
+                <input type="button" class="checkWord btn" value="Guess">
+                <span class="bulls" style="display:none"></span>
+                <span class="cows" style="display:none"></span>
+                <span class="victoryMessage" style="display:none">You got it!</span>
+            </div>
+        </div>
+        <div class="gameTitle">Bulls & Cows</div>
+        <div class="scratchArea"></div>
+        <div class="gameArea"></div>
+        <script src="js/lib/jquery-1.11.3.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <script src="js/lib/toastr.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/words.js"></script>
+        <script src="js/game.js"></script>
+    </body>
+</html>
