@@ -2,10 +2,20 @@ $(document).ready(function () {
     var selectedWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     var guessedWords = [];
     var pressedKeys = [];
+    var global = {settings: null};
+    global.settings = {
+        autoScratch: false,
+        apiUrl: "https://dictionary.yandex.net/api/v1/dicservice.json/lookup",
+        apiKey: "dict.1.1.20160518T071458Z.92744e8fbf915bea.3a1b0f1dedde34717b4098338fee5a9300119736"
+    };
+
+    // Here is a dictionary API key for this particular game
+    // dict.1.1.20160518T071458Z.92744e8fbf915bea.3a1b0f1dedde34717b4098338fee5a9300119736
+    // from https://tech.yandex.com
 
     // Populate the scratch area
     for (var i = 65; i <= 90; i += 1) {
-        $(".scratchArea").append('<div class="scratchItem">' + String.fromCharCode(i) + '</div>');
+        $(".scratchArea").append('<div class="scratchItem" data-token=' + String.fromCharCode(i) + '>' + String.fromCharCode(i) + '</div>');
     }
 
     function getNewWordField(addSpace) {
@@ -36,6 +46,7 @@ $(document).ready(function () {
                 message: "A word has to be 4 characters long"
             };
         }
+        // Check for duplicate characters
         var sortedWord = word.split("").sort();
         for (var i = 0; i < sortedWord.length - 1; i += 1) {
             if (sortedWord[i] === sortedWord[i + 1]) {
@@ -45,9 +56,14 @@ $(document).ready(function () {
                 };
             }
         }
-
-        // Check for duplicate characters
         // Check if word belongs to dictionary. May need Google APIs
+        // This logic won't work as it's an asynchronous call. This function will return true before we get a response from the API
+        var isInDict = true;
+        $.getJSON(global.settings.apiUrl + "?key=" + global.settings.apiKey + "&lang=en-en&text=" + word, function (response) {
+            if (response.def.length === 0) {
+                isInDict = false;
+            }
+        })
         // Lastly, check if word was already guessed
         if ($.inArray(word, guessedWords) !== -1) {
             return {
@@ -131,11 +147,11 @@ $(document).ready(function () {
 
     $(".gameArea").on("click", ".checkWord", function (e) {
         e.preventDefault();
+        e.stopPropagation();
         var inputFields = $(this).parent().find(".letterInput");
         var word = $.makeArray(inputFields.map(function (index, field) {
             return field.value;
         })).join('');
-        console.log(word);
         var validation = validateGuess(word);
         if (validation === true) {
         } else {
@@ -155,12 +171,23 @@ $(document).ready(function () {
             $(this).prop("disabled", "disabled").toggle("visibility");
             $(this).siblings(".bulls").toggle(true).html(result.bulls.toString() + (result.bulls === 1 ? " bull" : " bulls"));
             $(this).siblings(".cows").toggle(true).html(result.cows.toString() + (result.cows === 1 ? " cow" : " cows"));
+            if (global.settings.autoScratch === true) {
+                if (result.cows === 0 && result.bulls === 0) {
+                    $(word.split("")).each(function () {
+                        $(".scratchArea [data-token=" + this + "]").addClass("scratched");
+                    });
+                }
+            }
         } else {
             toastr.success("You got it!", "Aha!");
             $(this).toggle("visibility");
             $(this).siblings(".victoryMessage").toggle(true);
         }
     });
+
+    $(".gameArea").on("click", function (e) {
+        $(this).find("input:not([disabled]):first").focus();
+    })
 
     $(".scratchArea").on("click", ".scratchItem", function () {
         $(this).toggleClass("scratched");
