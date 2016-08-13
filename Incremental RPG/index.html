@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Social media tycoon</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/toastr.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/game.css">
+    </head>
+    <body>
+        <div class="gameTitle">Social media tycoon</div>
+        <div id="game" class="gameArea">
+            <div class="row wall">
+                <div class="col-md-4">
+                    <div class="media-post" v-for="(index,post) in media_posts">
+                        <div class="title">Mark Zuckerburg</div>
+                        <div><img class="media" /></div>
+                        <div class="post-footer">
+                            <div class="reactions">
+                                <a class="like" data-strength="{{post.likeStrength}}" ><input type="text" v-model="post.likes" value="{{post.likes}}"><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="like-counter">{{post.likes}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/lib/jquery-2.1.4.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <script src="js/lib/vue.min.js"></script>
+        <script src="js/lib/toastr.min.js"></script>
+        <script src="js/game.js"></script>
+    </body>
+</html>

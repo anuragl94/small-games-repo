@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'quicksand';
+    src: url('../fonts/Quicksand-Regular.ttf');
+}
+
+body * {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+body {
+    background-color: #3b5998;
+}
+
+.gameArea {
+    margin: 12px;
+    padding: 15px;
+    border-radius: 2px;
+    /*background-color: rgba(255,255,255,0.5);*/
+}
+
+.pageGap {
+    height: 86px;
+}
+
+.gameTitle {
+    margin: 12px;
+    top: 62px;
+    font-size: 48px;
+    vertical-align: middle;
+    font-family: 'quicksand', 'calibri';
+    color: white;
+}
+
+.template {
+    display: none !important;
+}
+
+#toast-container>div[class^="toast"] {
+    background-image: none !important;
+}
+
+.media-post {
+    padding: 10px;
+    background-color: white;
+}
+
+.media-post > div {
+    margin-bottom: 10px;
+}
+
+.media-post > div:last-child {
+    margin-bottom: 0px;
+}
+
+.title {
+    color: #3b5998;
+    font-weight: bold;
+}
+
+.media {
+    height: 250px;
+    margin-top: 10px;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.reactions, .like-counter {
+    display: inline-block;
+}
+
+.reactions a {
+    position: relative;
+    cursor: pointer;
+}
+
+.like:active {
+    top: 2px;
+}
